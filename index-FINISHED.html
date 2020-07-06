@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Drum Kit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <div class="keys">
+    <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <span class="sound">hurting livelihood</span>
+    </div>
+    <div data-key="83" class="key">
+      <kbd>S</kbd>
+      <span class="sound">appearing offline</span>
+    </div>
+    <div data-key="68" class="key">
+      <kbd>D</kbd>
+      <span class="sound">oh muh lord man</span>
+    </div>
+    <div data-key="70" class="key">
+      <kbd>F</kbd>
+      <span class="sound">oh muh lord funny</span>
+    </div>
+    <div data-key="71" class="key">
+      <kbd>G</kbd>
+      <span class="sound">whyyyyyyyyy</span>
+    </div>
+    <div data-key="72" class="key">
+      <kbd>H</kbd>
+      <span class="sound">ban anybody giving advice</span>
+    </div>
+    <div data-key="74" class="key">
+      <kbd>J</kbd>
+      <span class="sound">suing them </span>
+    </div>
+    <div data-key="75" class="key">
+      <kbd>K</kbd>
+      <span class="sound">look here look listen</span>
+    </div>
+    <div data-key="76" class="key">
+      <kbd>L</kbd>
+      <span class="sound">look at that bullshit man</span>
+    </div>
+  </div>
+
+<div class = 'clickEvent'>
+  <audio  data-key="65" src="sounds/all-theyre-doing-is-hurting-mlivlihood.mp3"></audio>
+</div> <div class = 'clickEvent'>
+  <audio  class = 'loud' data-key="83" src="sounds/appear-offline-does-not-fcking-stop-it.mp3"></audio>
+</div>
+<div class = 'clickEvent'>
+  <audio  data-key="68" src="sounds/oh-muh-lord-1.mp3"></audio>
+  </div>
+  <div class = 'clickEvent'>
+  <audio  data-key="70" src="sounds/oh-muh-lord-2.mp3"></audio>
+  </div>
+  <div class = 'clickEvent'>
+  <audio  data-key="71" src="sounds/why.mp3"></audio>
+  </div>
+  <div class = 'clickEvent'>
+  <audio  data-key="72" src="sounds/im-banning-anybody-trying-to-give-me-advice.mp3"></audio>
+  </div>
+  <div class = 'clickEvent'>
+  <audio  data-key="74" src="sounds/im-seriously-considering-suing-them.mp3"></audio>
+  </div>
+  <div class = 'clickEvent'>
+  <audio  class = 'loud' data-key="75" src="sounds/look-here-look-listen.mp3"></audio>
+  </div>
+  <div class = 'clickEvent'>
+  <audio  data-key="76" src="sounds/look-at-that-bull-sht.mp3"></audio>
+  </div>
+
+<script>
+  
+  function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
+
+  function playSound(e) {
+    const vid = document.querySelectorAll(".loud");
+    vid.forEach((video)=>{
+    video.volume =.4
+  })
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+    if (!audio) return;
+
+    key.classList.add('playing');
+    audio.currentTime = 0;
+    audio.play();
+  }
+
+  const keys = Array.from(document.querySelectorAll('.key'));
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  window.addEventListener('keydown', playSound);
+
+  keys.forEach(key => key.addEventListener('click', playSound))
+  
+</script>
+
+</body>
+</html>
