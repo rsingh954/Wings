@@ -100,7 +100,7 @@
   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
   window.addEventListener('keydown', playSound);
 
-  keys.forEach(key => key.addEventListener('touchstart', (e) =>{
+  keys.forEach(key => key.addEventListener('click', (e) =>{
     console.log(e.srcElement)
     if(e.target.tagName === 'KBD' || e.target.tagName === "SPAN"){
       const clickAudio = document.querySelector(`audio[data-key="${e.srcElement.parentElement.dataset.key}"]`);
