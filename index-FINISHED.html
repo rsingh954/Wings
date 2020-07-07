@@ -47,32 +47,32 @@
     </div>
   </div>
 
-<div class = 'clickEvent'>
+
   <audio  data-key="65" src="sounds/all-theyre-doing-is-hurting-mlivlihood.mp3"></audio>
-</div> <div class = 'clickEvent'>
+
   <audio  class = 'loud' data-key="83" src="sounds/appear-offline-does-not-fcking-stop-it.mp3"></audio>
-</div>
-<div class = 'clickEvent'>
+
+
   <audio  data-key="68" src="sounds/oh-muh-lord-1.mp3"></audio>
-  </div>
-  <div class = 'clickEvent'>
+
+  
   <audio  data-key="70" src="sounds/oh-muh-lord-2.mp3"></audio>
-  </div>
-  <div class = 'clickEvent'>
+
+  
   <audio  data-key="71" src="sounds/why.mp3"></audio>
-  </div>
-  <div class = 'clickEvent'>
+
+  
   <audio  data-key="72" src="sounds/im-banning-anybody-trying-to-give-me-advice.mp3"></audio>
-  </div>
-  <div class = 'clickEvent'>
+
+  
   <audio  data-key="74" src="sounds/im-seriously-considering-suing-them.mp3"></audio>
-  </div>
-  <div class = 'clickEvent'>
+
+  
   <audio  class = 'loud' data-key="75" src="sounds/look-here-look-listen.mp3"></audio>
-  </div>
-  <div class = 'clickEvent'>
+
+  
   <audio  data-key="76" src="sounds/look-at-that-bull-sht.mp3"></audio>
-  </div>
+
 
 <script>
   
@@ -89,7 +89,8 @@
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
     const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
     if (!audio) return;
-
+    console.log({audio})
+    console.log({key})
     key.classList.add('playing');
     audio.currentTime = 0;
     audio.play();
@@ -99,9 +100,24 @@
   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
   window.addEventListener('keydown', playSound);
 
-  keys.forEach(key => key.addEventListener('click', playSound))
-  
+  keys.forEach(key => key.addEventListener('click', (e) =>{
+    console.log(e.srcElement)
+    if(e.target.tagName === 'KBD' || e.target.tagName === "SPAN"){
+      const clickAudio = document.querySelector(`audio[data-key="${e.srcElement.parentElement.dataset.key}"]`);
+      console.log({clickAudio})
+      clickAudio.currentTime = 0;
+      clickAudio.play();
+    }else {
+      const clickAudio = document.querySelector(`audio[data-key="${e.currentTarget.dataset.key}"]`);
+      clickAudio.currentTime = 0;
+      clickAudio.play();
+    }
+
+    console.log(e.srcElement.parentElement.dataset.key)
+
+  }))
 </script>
 
 </body>
 </html>
+  
