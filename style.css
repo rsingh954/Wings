@@ -1,7 +1,7 @@
 html {
   font-size: 10px;
-  background: url(https://i.imgur.com/SHZBDNZ.jpg) top center;
-  background-size: contain;
+  background: url(./img/wing.jpg) top center;
+  background-size: auto;
 }
 
 body,html {
