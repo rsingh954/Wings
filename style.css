@@ -49,3 +49,19 @@ kbd {
   letter-spacing: .1rem;
   color: #ffc600;
 }
+@media (max-width: 800px) {
+  .keys {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
