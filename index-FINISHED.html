@@ -104,11 +104,15 @@
     console.log(e.srcElement)
     if(e.target.tagName === 'KBD' || e.target.tagName === "SPAN"){
       const clickAudio = document.querySelector(`audio[data-key="${e.srcElement.parentElement.dataset.key}"]`);
+      const key = document.querySelector(`div[data-key="${e.srcElement.parentElement.dataset.key}"]`);
       console.log({clickAudio})
+      key.classList.add('playing');
       clickAudio.currentTime = 0;
       clickAudio.play();
     }else {
       const clickAudio = document.querySelector(`audio[data-key="${e.currentTarget.dataset.key}"]`);
+      const key = document.querySelector(`div[data-key="${e.currentTarget.dataset.key}"]`);
+      key.classList.add('playing');
       clickAudio.currentTime = 0;
       clickAudio.play();
     }
