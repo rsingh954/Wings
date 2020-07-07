@@ -59,9 +59,81 @@ kbd {
     justify-content: center;
   }
 }
-
-@media (max-width: 500px) {
-  .cards {
-    grid-template-columns: 1fr;
+  @media (max-width: 500px) {
+    .keys {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
   }
+
+
+  @media only screen and (max-width: 300px)  {
+    /* For mobile phones: */
+    .keys {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+  }
+
+  /* #### Mobile Phones Portrait #### */
+@media screen and (max-device-width: 480px) and (orientation: portrait){
+    .keys {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
 }
+
+/* #### Mobile Phones Landscape #### */
+@media screen and (max-device-width: 640px) and (orientation: landscape){
+    .keys {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+}
+
+/* #### Mobile Phones Portrait or Landscape #### */
+@media screen and (max-device-width: 640px){
+    .keys {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+}
+
+/* #### iPhone 4+ Portrait or Landscape #### */
+@media screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 2){
+    .keys {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+}
+
+/* #### iPhone 5 Portrait or Landscape #### */
+@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2){
+    .keys {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+}
+
+/* #### iPhone 6 and 6 plus Portrait or Landscape #### */
+@media (min-device-height: 667px) and (min-device-width: 375px) and (-webkit-min-device-pixel-ratio: 3){
+    .keys {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+}
+
+
+
+
